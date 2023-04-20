@@ -17,7 +17,7 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // show all Data
         //Here we could use Cache too
@@ -31,9 +31,10 @@ class ArticleController extends Controller
          *   });
          * 
          */
+        $perPage = $request->query('perPage', 5);
         $news_articles = NewsArticle::select('id', 'title', 'author', 'creation_date', 'publication_date', 'expiration_date')
         ->where('expiration_date', '>=', Carbon::today())
-        ->get();
+        ->paginate($perPage);
         
         $articles = $news_articles->map(function ($article) {
             $age = $this->getAuthorAge($article->author);
