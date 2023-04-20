@@ -53,9 +53,9 @@ class ArticleController extends Controller
     {
         // validate Input Parameter
         $validatedData = $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
-            'text' => 'required|max:500',
+            'text' => 'required|string|max:500',
             'creation_date' => 'required|date',
             'publication_date' => 'required|date'
         ]);
