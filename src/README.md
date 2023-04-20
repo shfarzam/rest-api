@@ -40,6 +40,101 @@ You don’t have to implement the following tasks. Please use your time to do th
 
 
 
+
+# Task 1 - JSON REST API
+
+## Overview
+
+This API allows you to create, edit, list, view and delete news articles. Each article has a title, an author, a text, a creation date, a publication date, and an expiration date. The data is stored in a MySQL database. The API does not require authentication.
+
+## Endpoints
+
+### Create article
+
+`POST /articles` 
+
+Creates a new news article. Requires the following parameters:
+
+-   `title` (string): the title of the article
+-   `author` (string): the author of the article
+-   `text` (string): the content of the article
+-   `creation_date` (datetime): the date the article was created
+-   `publication_date` (datetime): the date the article was published
+-   `expiration_date` (datetime): the date the article will expire
+
+Returns the created article object with its unique `id`.
+
+### Edit article
+
+`PUT /articles/{id}` 
+
+Updates an existing news article. Requires the following parameters:
+
+-   `title` (string): the title of the article
+-   `author` (string): the author of the article
+-   `text` (string): the content of the article
+-   `creation_date` (datetime): the date the article was created
+-   `publication_date` (datetime): the date the article was published
+-   `expiration_date` (datetime): the date the article will expire
+
+Returns the updated article object.
+
+### List articles
+
+`GET /articles` 
+
+Returns a list of news articles, each with the following properties:
+
+-   `id` (integer): the unique identifier of the article
+-   `title` (string): the title of the article
+-   `author` (string): the author of the article
+-   `creation_date` (datetime): the date the article was created
+-   `publication_date` (datetime): the date the article was published
+-   `age` (integer, optional): the estimated age of the author based on the API at [https://agify.io](https://agify.io/)
+
+Note that the `text` property is not included in the response.
+
+### View article
+
+`GET /articles/{id}` 
+
+Returns a specific news article with the following properties:
+
+-   `id` (integer): the unique identifier of the article
+-   `title` (string): the title of the article
+-   `author` (string): the author of the article
+-   `text` (string): the content of the article
+-   `creation_date` (datetime): the date the article was created
+-   `publication_date` (datetime): the date the article was published
+-   `expiration_date` (datetime): the date the article will expire
+-   `age` (integer, optional): the estimated age of the author based on the API at [https://agify.io](https://agify.io/)
+
+### Delete article
+
+`DELETE /articles/{id}` 
+
+Deletes a news article with the given `id`. Returns a 204 No Content response on success.
+
+## Validation
+
+All endpoints have appropriate input validation for their respective parameters, such as required fields and data type validation.
+
+## Expiration
+
+Expired articles are not shown in the response of the `GET /articles` endpoint.
+
+## Error Handling
+
+In case of errors, the API returns a JSON object with a `message` property containing a description of the error.
+
+## Libraries/Frameworks Used
+
+-   Laravel: a PHP web application framework for building web applications according to the Model-View-Controller (MVC) architectural pattern.
+
+## Conclusion
+
+This API provides a simple and effective way to create, edit, list, view and delete news articles
+
 # Task 1.5 and 1.6 Conception
 
 ## Task 1.5 - Tagging Articles
