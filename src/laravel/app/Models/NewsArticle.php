@@ -11,6 +11,10 @@ class NewsArticle extends Model
 
     protected $table = 'news_articles';
 
+    protected $dates = ['creation_date','publication_date','expiration_date'];
+
+    protected $hidden = ['created_at','updated_at'];
+
     protected $fillable = [
         'title',
         'author',
