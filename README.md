@@ -37,6 +37,8 @@ The objective of this project is to create a JSON REST API that allows users to 
 
 The JSON REST API project aims to provide a robust and efficient solution for managing news articles. By following the implementation steps outlined above, you can create an API that allows users to create, edit, list, view, and delete articles. Additionally, features such as input validation, article expiration, tagging, and filtering enhance the functionality and usability of the API.
 
+   > **Part 2**
+
 # docker-compos
 e-laravel
 A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development.
@@ -125,3 +127,73 @@ Want to build for production? Simply run `docker-compose run --rm npm run build`
 The current version of Laravel (9 as of today) uses MailHog as the default application for testing email sending and general SMTP work during local development. Using the provided Docker Hub image, getting an instance set up and ready is simple and straight-forward. The service is included in the `docker-compose.yml` file, and spins up alongside the webserver and database services.
 
 To see the dashboard and view any emails coming through the system, visit [localhost:8025](http://localhost:8025) after running `docker-compose up -d site`.
+
+   > **Part 3**
+
+## Endpoints
+
+### [](https://github.com/shfarzam/rest-api/tree/dev/src#create-article)Create article
+
+`POST /articles`
+
+Creates a new news article. Requires the following parameters:
+
+-   `title`  (string): the title of the article
+-   `author`  (string): the author of the article
+-   `text`  (string): the content of the article
+-   `creation_date`  (datetime): the date the article was created
+-   `publication_date`  (datetime): the date the article was published
+-   `expiration_date`  (datetime): the date the article will expire
+
+Returns the created article object with its unique  `id`.
+
+### [](https://github.com/shfarzam/rest-api/tree/dev/src#edit-article)Edit article
+
+`PUT /articles/{id}`
+
+Updates an existing news article. Requires the following parameters:
+
+-   `title`  (string): the title of the article
+-   `author`  (string): the author of the article
+-   `text`  (string): the content of the article
+-   `creation_date`  (datetime): the date the article was created
+-   `publication_date`  (datetime): the date the article was published
+-   `expiration_date`  (datetime): the date the article will expire
+
+Returns the updated article object.
+
+### [](https://github.com/shfarzam/rest-api/tree/dev/src#list-articles)List articles
+
+`GET /articles`
+
+Returns a list of news articles, each with the following properties:
+
+-   `id`  (integer): the unique identifier of the article
+-   `title`  (string): the title of the article
+-   `author`  (string): the author of the article
+-   `creation_date`  (datetime): the date the article was created
+-   `publication_date`  (datetime): the date the article was published
+-   `age`  (integer, optional): the estimated age of the author based on the API at  [https://agify.io](https://agify.io/)
+
+Note that the  `text`  property is not included in the response.
+
+### [](https://github.com/shfarzam/rest-api/tree/dev/src#view-article)View article
+
+`GET /articles/{id}`
+
+Returns a specific news article with the following properties:
+
+-   `id`  (integer): the unique identifier of the article
+-   `title`  (string): the title of the article
+-   `author`  (string): the author of the article
+-   `text`  (string): the content of the article
+-   `creation_date`  (datetime): the date the article was created
+-   `publication_date`  (datetime): the date the article was published
+-   `expiration_date`  (datetime): the date the article will expire
+-   `age`  (integer, optional): the estimated age of the author based on the API at  [https://agify.io](https://agify.io/)
+
+### [](https://github.com/shfarzam/rest-api/tree/dev/src#delete-article)Delete article
+
+`DELETE /articles/{id}`
+
+Deletes a news article with the given  `id`. Returns a 204 No Content response on success.
