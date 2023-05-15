@@ -1,3 +1,42 @@
+# JSON REST API Project Documentation
+
+This document outlines the project details and specifications for developing a JSON REST API for managing news articles.
+
+## Objective
+
+The objective of this project is to create a JSON REST API that allows users to perform various operations on news articles, such as creating, editing, listing, viewing, and deleting articles. The API should be able to store article data in a MySQL database and provide necessary validation for input parameters. Additional features, such as integrating an external API and implementing article expiration and tagging functionalities, should also be considered.
+
+## Implementation Steps
+
+1. **Setup**:
+   - Install one of the following frameworks on your computer: Laravel (https://laravel.com/docs/9.x)
+
+2. **API Implementation**:
+   - Implement a JSON REST API with the following features:
+     - Create: Allow users to create new news articles by providing necessary parameters such as title, author, text, creation date, publication date, and expiration date.
+     - Edit: Enable users to update existing news articles by providing the article ID and the updated parameters.
+     - List: Provide an endpoint to retrieve a list of news articles, excluding the article text but including the article ID, title, author, creation date, publication date, and the estimated age of the author.
+     - View: Allow users to retrieve a specific news article by providing the article ID, including all details such as title, author, text, creation date, publication date, expiration date, and the estimated age of the author.
+     - Delete: Implement an endpoint to delete a news article by providing the article ID.
+   - Apply appropriate input validation for all API endpoints to ensure the provided data is valid and meets the required criteria.
+   - Integrate an external API (e.g., https://agify.io) to fetch and display the estimated age of the author for each article when listing and viewing.
+
+3. **Article Expiration**:
+   - Add an expiration date field to the article model in the database.
+   - Modify the listing endpoint to exclude expired articles from the response.
+
+4. **Tagging Articles**:
+   - Allow articles to be assigned tags from a predefined set of categories, such as Food, Lifestyle, Programming, Work, Life, Sleep, etc.
+   - Implement the ability to add new tags via the API.
+
+5. **Filtering by Tags and Author**:
+   - Enhance the listing endpoint to support filtering articles by tags and author.
+   - Allow users to filter articles based on specific tags or authors by providing appropriate query parameters.
+
+## Conclusion
+
+The JSON REST API project aims to provide a robust and efficient solution for managing news articles. By following the implementation steps outlined above, you can create an API that allows users to create, edit, list, view, and delete articles. Additionally, features such as input validation, article expiration, tagging, and filtering enhance the functionality and usability of the API.
+
 # docker-compos
 e-laravel
 A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development.
